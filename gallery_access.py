@@ -1,7 +1,15 @@
+from kivy.uix.image import Image
+from kivy.uix.filechooser import FileChooserIconView
 from plyer import filechooser
 import pyttsx3
 import speech_recognition as sr
 
+def open_gallery():
+    filechooser = FileChooserIconView(path='/path_to_gallery/')
+    # Here you can add further logic to display images and handle the file chosen
+
+
+"""
 def open_filechooser():
     file_path = filechooser.open_file()
     return file_path
@@ -23,3 +31,4 @@ def capture_voice_command():
             return "Sorry, I did not get that."
         except sr.RequestError:
             return "API unavailable."
+"""

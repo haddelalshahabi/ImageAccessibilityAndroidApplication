@@ -1,3 +1,23 @@
+from kivy.app import App
+from main_layout import MainLayout  # Import the MainLayout you created
+from audio_feedback import voice_prompt
+from voice_commands import listen_to_user
+
+class MainApp(App):
+
+    def build(self):
+        # When the app starts, give the user a voice prompt
+        voice_prompt("Welcome to the Image Accessibility App. Swipe right to open the gallery or say 'Open Gallery'.")
+
+        # Start listening to voice commands
+        listen_to_user()
+
+        return MainLayout()
+
+
+if __name__ == "__main__":
+    MainApp().run()
+
 """
 from kivy.app import App
 from main_layout import MainLayout  # Import the MainLayout you created
@@ -28,14 +48,3 @@ if __name__ == "__main__":
     app.run()
 
 """
-
-from kivy.app import App
-from main_layout import MainLayout  # Import the MainLayout you created
-
-class MainApp(App):
-
-    def build(self):
-        return MainLayout()
-
-if __name__ == "__main__":
-    MainApp().run()

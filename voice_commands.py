@@ -1,11 +1,27 @@
 import speech_recognition as sr
 
+def listen_to_user():
+    r = sr.Recognizer()
+    with sr.Microphone() as source:
+        audio_data = r.listen(source)
+        try:
+            text = r.recognize_google(audio_data)
+            if 'open gallery' in text.lower():
+                open_gallery()
+        except:
+            # Handle exceptions (e.g., re-prompt the user or handle other commands)
+            pass
+
+
+"""
 def get_voice_command():
     recognizer = sr.Recognizer()
     with sr.Microphone() as source:
         print("Say something:")
         audio = recognizer.listen(source)
     return recognizer.recognize_google(audio)
+    
+"""
 
 """
 import speech_recognition as sr

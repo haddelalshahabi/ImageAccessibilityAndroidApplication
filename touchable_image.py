@@ -1,14 +1,23 @@
 from kivy.uix.image import Image
+from object_detection import ImageCaptioning
+from audio_feedback import voice_prompt
 
 class TouchableImage(Image):
+    def __init__(self, **kwargs):
+        super(TouchableImage, self).__init__(**kwargs)
+        # Initialize the ImageCaptioning class to get descriptions
+        self.captioning = ImageCaptioning()
 
     def on_touch_down(self, touch):
+        # Check if the image was touched
         if self.collide_point(*touch.pos):
-            # This means the touch occurred within the boundaries of this Image widget.
-            print("Image touched at position:", touch.pos)
-            # Here, you'd typically call some function to identify the object at touch.pos and provide audio feedback.
-            return True
-        return super(TouchableImage, self).on_touch_down(touch)
+            self.describe_image(self.source)
+
+    def describe_image(self, img_path):
+        # Get the description using the AI model
+        description = self.captioning.get_image_description(img_path)
+        # Use voice_prompt to give audio feedback to the user
+        voice_prompt(description)
 
 
 """
