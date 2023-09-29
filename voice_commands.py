@@ -1,5 +1,34 @@
 import speech_recognition as sr
 
+class VoiceCommands:
+    @staticmethod
+    def on_voice_command():
+        r = sr.Recognizer()
+        with sr.Microphone() as source:
+            audio = r.listen(source)
+            try:
+                command = r.recognize_google(audio).lower()
+                return command
+            except sr.UnknownValueError:
+                return None
+
+""""
+
+def recognize_voice_command():
+    r = sr.Recognizer()
+    with sr.Microphone() as source:
+        print("Say something!")
+        audio = r.listen(source)
+
+    try:
+        command = r.recognize_google(audio)
+        if "open gallery" in command:
+            open_gallery()  # This function should be in gallery_access.py
+    except:
+        print("Sorry, I did not get that.")
+
+
+
 def listen_to_user():
     r = sr.Recognizer()
     with sr.Microphone() as source:
@@ -12,7 +41,7 @@ def listen_to_user():
             # Handle exceptions (e.g., re-prompt the user or handle other commands)
             pass
 
-
+    """
 """
 def get_voice_command():
     recognizer = sr.Recognizer()

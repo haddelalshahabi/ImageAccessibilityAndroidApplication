@@ -1,10 +1,10 @@
 from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.button import Button
-from touchable_image import TouchableImage  # Import the custom widget you created
-from kivy.core.window import Window
-from gallery_access import open_gallery
 
+class MainLayout(BoxLayout):
+    pass
+    # Define the main UI layout, buttons, swipes, voice command listeners, etc.
 
+"""
 class MainLayout(BoxLayout):
 
     def __init__(self, **kwargs):
@@ -18,7 +18,6 @@ class MainLayout(BoxLayout):
             open_gallery()
 
 
-"""
 class MainLayout(BoxLayout):
 
     def __init__(self, **kwargs):

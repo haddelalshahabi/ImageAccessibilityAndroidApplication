@@ -1,5 +1,23 @@
-import tensorflow as tf
-import tensorflow_hub as hub
+class ObjectDetection:
+    @staticmethod
+    def get_image_description(image_path):
+        # Stubbed out for now
+        return "A brief description of the image."
+
+    @staticmethod
+    def get_detailed_description(image_path):
+        # Stubbed out for now
+        return "A detailed description of the image."
+
+    @staticmethod
+    def get_object_annotations(image_path):
+        # Stubbed out for now
+        return {"cup": (100, 150)}
+
+
+
+
+"""
 class ImageCaptioning:
     def __init__(self):
         # Load a pre-trained image captioning model from TensorFlow Hub
@@ -46,7 +64,7 @@ class ImageCaptioning:
             self.set_up_tokenizer()
         return self.tokenizer.sequences_to_texts(tokens)
 
-"""
+
 import tensorflow as tf
 from PIL import Image
 import numpy as np

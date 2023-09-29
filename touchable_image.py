@@ -1,7 +1,29 @@
 from kivy.uix.image import Image
-from object_detection import ImageCaptioning
-from audio_feedback import voice_prompt
+from gallery_access import GalleryAccess
+from object_detection import ObjectDetection  # Import the ObjectDetection class
 
+class TouchableImage(Image):
+    def on_touch_down(self, touch):
+        # For now, just navigate to the next image on touch
+        GalleryAccess.navigate_images("next", "touch")
+
+    def on_touch_move(self, touch):
+        # Handle swipe gestures
+        if touch.dx > 10:  # Swipe right
+            GalleryAccess.navigate_images("previous", "touch")
+        elif touch.dx < -10:  # Swipe left
+            GalleryAccess.navigate_images("next", "touch")
+
+    def on_touch_up(self, touch):
+        # Handle double-tap for detailed description
+        # This is a stubbed function and might need additional logic
+        if touch.is_double_tap:
+            detailed_description = ObjectDetection.get_detailed_description(self.source)
+            # Display detailed_description in a text box for deaf users
+     # Display detailed_description in a text box for deaf users
+
+
+"""
 class TouchableImage(Image):
     def __init__(self, **kwargs):
         super(TouchableImage, self).__init__(**kwargs)
@@ -20,7 +42,6 @@ class TouchableImage(Image):
         voice_prompt(description)
 
 
-"""
 from object_detection import detect_objects
 from gallery_access import text_to_speech
 

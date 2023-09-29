@@ -1,8 +1,30 @@
 from kivy.app import App
-from main_layout import MainLayout  # Import the MainLayout you created
-from audio_feedback import voice_prompt
-from voice_commands import listen_to_user
+from kivy.uix.boxlayout import BoxLayout
+from voice_commands import VoiceCommands
+from gallery_access import GalleryAccess
 
+class MainApp(App):
+    user_type = None  # "blind" or "deaf"
+
+    def build(self):
+        layout = BoxLayout()
+        # Add widgets for gallery, voice recognition, etc.
+
+        # Listen for voice commands
+        command = VoiceCommands.on_voice_command()
+        if command == "open gallery":
+            self.user_type = "blind"
+            GalleryAccess.navigate_images("next", "voice")
+        # ... handle other commands ...
+
+        return layout
+
+
+if __name__ == "__main__":
+    MainApp().run()
+
+
+"""
 class MainApp(App):
 
     def build(self):
@@ -13,15 +35,6 @@ class MainApp(App):
         listen_to_user()
 
         return MainLayout()
-
-
-if __name__ == "__main__":
-    MainApp().run()
-
-"""
-from kivy.app import App
-from main_layout import MainLayout  # Import the MainLayout you created
-from voice_commands import capture_voice_command, interpret_command  # Import the voice command functions
 
 class MainApp(App):
 

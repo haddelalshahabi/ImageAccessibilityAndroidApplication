@@ -1,3 +1,10 @@
+from kivy.uix.button import Button
+from kivy.uix.textinput import TextInput
+
+# Define custom UI components if needed
+
+
+"""
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.image import Image
 from kivy.uix.label import Label
@@ -40,7 +47,6 @@ class DecisionLayout(BoxLayout):
         # Logic to get a description of the chosen image
         pass
 
-"""
 class MainLayout(BoxLayout):
     def __init__(self, **kwargs):
         super(MainLayout, self).__init__(**kwargs)
