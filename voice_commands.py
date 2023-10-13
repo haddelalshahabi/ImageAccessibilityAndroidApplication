@@ -4,25 +4,22 @@ import speech_recognition as sr
 
 class VoiceCommands:
     @staticmethod
-    def on_voice_command():
+    def on_voice_command(duration=5):
         r = sr.Recognizer()
-        samplerate = 44100
-        duration = 5  # seconds
-        myrecording = sd.rec(int(samplerate * duration), samplerate=samplerate, channels=1, dtype='int16')
+
+        samplerate = 44100  # This can be changed based on your requirement
+        audio_data = sd.rec(int(samplerate * duration), samplerate=samplerate, channels=1, dtype='int16')
         sd.wait()
-        audio_data = np.frombuffer(myrecording, dtype=np.int16)
         audio_sample = sr.AudioData(audio_data.tobytes(), samplerate, 2)
 
         try:
-            # Use recognizer to convert audio_sample to text
             command = r.recognize_google(audio_sample)
             return command
         except sr.UnknownValueError:
-            print("Could not understand audio")
+            print("Could not understand audio. Please speak clearly.")
         except sr.RequestError as e:
-            print("Could not request results; {0}".format(e))
+            print("API unavailable or quota exceeded; {0}".format(e))
         return None
-
 
 """"
 

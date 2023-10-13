@@ -2,7 +2,9 @@ from kivy.uix.image import Image
 from gallery_access import GalleryAccess
 from object_detection import ObjectDetection  # Import the ObjectDetection class
 
+
 class TouchableImage(Image):
+
     def on_touch_down(self, touch):
         # For now, just navigate to the next image on touch
         GalleryAccess.navigate_images("next", "touch")
@@ -10,17 +12,16 @@ class TouchableImage(Image):
     def on_touch_move(self, touch):
         # Handle swipe gestures
         if touch.dx > 10:  # Swipe right
-            GalleryAccess.navigate_images("previous", "touch")
+            GalleryAccess.navigate_images("previous", "voice")  # Changed mode to "voice"
         elif touch.dx < -10:  # Swipe left
-            GalleryAccess.navigate_images("next", "touch")
+            GalleryAccess.navpythoigate_images("next", "voice")  # Changed mode to "voice"
 
     def on_touch_up(self, touch):
         # Handle double-tap for detailed description
-        # This is a stubbed function and might need additional logic
         if touch.is_double_tap:
             detailed_description = ObjectDetection.get_detailed_description(self.source)
             # Display detailed_description in a text box for deaf users
-     # Display detailed_description in a text box for deaf users
+
 
 
 """
