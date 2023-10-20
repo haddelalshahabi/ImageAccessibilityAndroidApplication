@@ -1,7 +1,14 @@
-from kivy.uix.button import Button
-from kivy.uix.textinput import TextInput
+class Settings():
+    def __init__(self):
+        self.settings = {
+            "audio_voice": True,
+            "object_detection": True,
+            "text_description": True
+        }
 
-# Define custom UI components if needed
+    def toggle_setting(self, setting_name):
+        if setting_name in self.settings:
+            self.settings[setting_name] = not self.settings[setting_name]
 
 
 """

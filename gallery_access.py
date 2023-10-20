@@ -1,8 +1,34 @@
-from audio_feedback import AudioFeedback
-from object_detection import ObjectDetection
-from voice_commands import VoiceCommands
+from plyer import filechooser
+
+def list_all_folders():
+    """
+    Access and list all folders in the gallery.
+    Note: This is a simplified version. Depending on the Android version and file structure, you might need more detailed methods.
+    """
+    # This will open a file chooser. Depending on how your gallery is structured, you might need to adjust.
+    paths = filechooser.choose_dir(multiple=True)
+    return paths
+
+def navigate_to_folder(folder_name):
+    """
+    Navigate to a specific folder.
+    This function is a placeholder, as actual navigation will depend on your UI and how you display the gallery to users.
+    """
+    # Placeholder logic
+    print(f"Navigating to folder: {folder_name}")
+
+def get_images_from_folder(folder_path):
+    """
+    Get all images from a specific folder.
+    This function is a simplified version, assuming images are directly in the specified folder and not in sub-folders.
+    """
+    # Placeholder logic
+    # In a real-world scenario, you'd return a list of all image files in the folder.
+    images = []
+    return images
 
 
+"""
 class GalleryAccess:
     current_image_index = 0
     images = []  # List of image paths
@@ -34,31 +60,4 @@ class GalleryAccess:
             cls.navigate_images("next", "voice")
         elif command in ["go to the previous image", "previous"]:
             cls.navigate_images("previous", "voice")
-
-"""
-def open_gallery():
-    filechooser = FileChooserIconView(path='/path_to_gallery/')
-    # Here you can add further logic to display images and handle the file chosen
-
-def open_filechooser():
-    file_path = filechooser.open_file()
-    return file_path
-
-def text_to_speech(text):
-    engine = pyttsx3.init()
-    engine.say(text)
-    engine.runAndWait()
-
-def capture_voice_command():
-    recognizer = sr.Recognizer()
-    with sr.Microphone() as source:
-        recognizer.adjust_for_ambient_noise(source)
-        audio = recognizer.listen(source)
-        try:
-            command = recognizer.recognize_google(audio)
-            return command
-        except sr.UnknownValueError:
-            return "Sorry, I did not get that."
-        except sr.RequestError:
-            return "API unavailable."
 """
